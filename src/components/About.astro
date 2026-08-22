@@ -4,33 +4,27 @@ const blocks = [
     tag: "Our Mission",
     title: "Dependable energy supply, without compromise",
     body: "To deliver petroleum products and energy logistics services with unmatched reliability, safety, and efficiency &mdash; keeping our clients' operations running without interruption.",
-    icon: "target",
+    image: "/images/about/mission.jpg",
+    alt: "Two SAF Energy field staff in safety helmets and coveralls walking toward a refinery at sunset",
     reverse: false,
   },
   {
     tag: "Our Vision",
     title: "West Africa's most trusted energy partner",
     body: "To become a leading name in petroleum distribution and energy logistics, recognized for integrity, innovation, and the strength of long-term partnerships with the industries we serve.",
-    icon: "compass",
+    image: "/images/about/vision.jpg",
+    alt: "Digital rendering of a next-generation petroleum processing and pipeline facility",
     reverse: true,
   },
   {
     tag: "What We Do",
     title: "End-to-end petroleum supply and logistics",
     body: "From bulk procurement and storage to haulage and last-mile delivery, SAF Energy manages the full supply chain so businesses, retailers, and institutions get fuel where and when they need it.",
-    icon: "route",
+    image: "/images/about/what-we-do.jpg",
+    alt: "Aerial view of an offshore petroleum platform at sea",
     reverse: false,
   },
 ];
-
-const icons: Record<string, string> = {
-  target:
-    'M12 21a9 9 0 100-18 9 9 0 000 18zM12 17a5 5 0 100-10 5 5 0 000 10zM12 13a1 1 0 100-2 1 1 0 000 2z',
-  compass:
-    'M12 21a9 9 0 100-18 9 9 0 000 18zM15 9l-2.5 5.5L9 16.5 11.5 11 15 9z',
-  route:
-    'M6 19a2 2 0 100-4 2 2 0 000 4zM18 9a2 2 0 100-4 2 2 0 000 4zM8 17c4-1 6-3 8-6M6 15V9a2 2 0 012-2h2',
-};
 ---
 
 <section id="about" class="bg-white py-24">
@@ -45,14 +39,14 @@ const icons: Record<string, string> = {
         blocks.map((block) => (
           <div class={`flex flex-col items-center gap-10 lg:gap-16 ${block.reverse ? "lg:flex-row-reverse" : "lg:flex-row"}`}>
             <div class="w-full lg:w-1/2">
-              <div class="relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-petrol to-petrol-dark">
-                <div
-                  class="absolute inset-0 opacity-10"
-                  style="background-image: linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px); background-size: 32px 32px;"
+              <div class="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
+                <img
+                  src={block.image}
+                  alt={block.alt}
+                  class="h-full w-full object-cover"
+                  loading="lazy"
                 />
-                <svg class="relative h-20 w-20 text-amber" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.25">
-                  <path stroke-linecap="round" stroke-linejoin="round" d={icons[block.icon]} />
-                </svg>
+                <div class="absolute inset-0 bg-gradient-to-t from-petrol-dark/40 via-transparent to-transparent" />
               </div>
             </div>
 
