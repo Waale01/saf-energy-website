@@ -1,0 +1,58 @@
+---
+const projects = [
+  {
+    title: "Regional Depot Fuel Supply Program",
+    category: "Bulk Supply",
+    body: "Ongoing PMS and AGO supply to a network of filling stations across multiple states, with scheduled weekly deliveries.",
+  },
+  {
+    title: "Industrial Client Storage Partnership",
+    category: "Storage & Terminal",
+    body: "Dedicated tank storage and inventory management for a manufacturing client requiring consistent diesel reserves.",
+  },
+  {
+    title: "Fleet Haulage Expansion",
+    category: "Haulage & Logistics",
+    body: "Deployment of additional tanker trucks to support growing distribution demand across regional corridors.",
+  },
+  {
+    title: "Retail Station Lubricants Rollout",
+    category: "Products",
+    body: "Supply and distribution of lubricant product lines to independent retail stations as part of a portfolio expansion.",
+  },
+];
+---
+
+<section id="projects" class="bg-white py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <span class="text-sm font-bold uppercase tracking-widest text-amber">Projects &amp; Portfolio</span>
+      <h2 class="mt-3 text-3xl font-extrabold text-petrol sm:text-4xl">Work we've delivered</h2>
+      <p class="mt-4 text-base leading-relaxed text-steel">
+        A snapshot of recent engagements. Full case studies and project photography coming soon.
+      </p>
+    </div>
+
+    <div class="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2">
+      {
+        projects.map((project) => (
+          <article class="group overflow-hidden rounded-2xl border border-steel-light">
+            <div class="relative flex aspect-[16/9] items-center justify-center overflow-hidden bg-gradient-to-br from-petrol-dark via-petrol to-charcoal">
+              <div
+                class="absolute inset-0 opacity-10"
+                style="background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.6) 0 2px, transparent 2px 24px);"
+              />
+              <span class="relative rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-amber backdrop-blur">
+                {project.category}
+              </span>
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg font-bold text-petrol">{project.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-steel">{project.body}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
