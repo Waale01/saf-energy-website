@@ -33,23 +33,21 @@ const projects = [
       </p>
     </div>
 
-    <div class="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2">
+    <div class="mt-16 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
       {
         projects.map((project) => (
-          <article class="group overflow-hidden rounded-2xl border border-steel-light">
-            <div class="relative flex aspect-[16/9] items-center justify-center overflow-hidden bg-gradient-to-br from-petrol-dark via-petrol to-charcoal">
+          <article class="text-center">
+            <div class="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-petrol-dark via-petrol to-charcoal">
               <div
                 class="absolute inset-0 opacity-10"
                 style="background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.6) 0 2px, transparent 2px 24px);"
               />
-              <span class="relative rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-amber backdrop-blur">
+              <span class="relative rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-amber backdrop-blur">
                 {project.category}
               </span>
             </div>
-            <div class="p-6">
-              <h3 class="text-lg font-bold text-petrol">{project.title}</h3>
-              <p class="mt-2 text-sm leading-relaxed text-steel">{project.body}</p>
-            </div>
+            <h3 class="mt-4 font-serif text-lg font-bold text-petrol">{project.title}</h3>
+            <p class="mt-2 font-serif text-sm leading-relaxed text-steel">{project.body}</p>
           </article>
         ))
       }
