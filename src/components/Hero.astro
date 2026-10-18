@@ -1,31 +1,62 @@
-<section id="top" class="relative flex min-h-[92vh] items-center overflow-hidden bg-petrol pt-16">
-  <div
-    class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(217,123,41,0.18),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(255,255,255,0.08),transparent_40%)]"
-  >
-  </div>
-  <div
-    class="absolute inset-0 opacity-[0.07]"
-    style="background-image: linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px); background-size: 48px 48px;"
-  >
-  </div>
-  <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-petrol-dark to-transparent"></div>
+---
+// Each slide swaps the background photo and the small label; the headline and buttons stay put.
+// To add a slide (e.g. fuel delivery), drop the image in public/images/hero and add an entry here.
+const slides = [
+  {
+    src: "/images/hero/hero-building.webp",
+    alt: "Office building at dusk with rooftop solar panels, a generator enclosure and a diesel tanker at the gate",
+    // Slight blur; scaled up a touch so the blurred edges stay off-screen.
+    position: "object-[65%_center] blur-[2px] scale-105",
+    label: "Fuel, Power & Solar Solutions",
+  },
+  {
+    src: "/images/hero/hero-generator.webp",
+    alt: "Gloved hand pressing a button on a diesel generator control panel with a green running light",
+    position: "object-[70%_center]",
+    label: "Generators & Backup Power",
+  },
+  {
+    src: "/images/hero/hero-solar.webp",
+    alt: "Rows of solar panels in a field at sunset",
+    position: "object-[60%_center]",
+    label: "Solar & Hybrid Systems",
+  },
+];
+---
 
-  <div class="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
-    <div class="max-w-3xl">
+<section id="top" class="relative flex min-h-[92vh] items-center overflow-hidden bg-charcoal pt-16">
+  <div class="absolute inset-0 top-16">
+    {
+      slides.map((slide, i) => (
+        <img
+          data-slide={i}
+          src={slide.src}
+          alt={slide.alt}
+          loading={i === 0 ? "eager" : "lazy"}
+          class={`hero-slide absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${slide.position} ${i === 0 ? "opacity-100" : "opacity-0"}`}
+        />
+      ))
+    }
+    <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/5"></div>
+    <div class="absolute inset-0 bg-black/50 lg:hidden"></div>
+  </div>
+  <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/60 to-transparent"></div>
+
+  <div class="relative mx-auto w-full max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+    <div class="max-w-2xl">
       <span
-        class="inline-flex items-center gap-2 rounded-full border border-amber/40 bg-amber/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-amber"
+        id="hero-label"
+        class="inline-flex items-center gap-2 rounded-full border border-amber/40 bg-amber/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-amber transition-opacity duration-500"
       >
-        Reliable Petroleum Supply &amp; Logistics
+        {slides[0].label}
       </span>
 
       <h1 class="mt-6 text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-6xl">
-        Powering Industry with <span class="text-amber">Trusted Energy</span> Solutions
+        Reliable <span class="text-amber">Fuel and Power</span> for Estates, Banks and Businesses
       </h1>
 
-      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-steel-light">
-        SAF Energy Limited delivers petroleum products, bulk fuel distribution, storage, and haulage
-        services built on safety, consistency, and industrial-grade standards, from terminal to
-        destination.
+      <p class="mt-6 max-w-xl text-lg leading-relaxed text-white/80">
+        Scheduled diesel and LPG supply, backup power, and solar that cuts your diesel spend.
       </p>
 
       <div class="mt-10 flex flex-wrap items-center gap-4">
@@ -43,20 +74,87 @@
         </a>
       </div>
 
-      <dl class="mt-16 grid max-w-xl grid-cols-3 gap-6 border-t border-white/10 pt-8">
+      <dl class="mt-16 grid max-w-xl grid-cols-3 gap-6 border-t border-white/15 pt-8">
         <div>
-          <dt class="text-2xl font-extrabold text-white sm:text-3xl">10+</dt>
-          <dd class="mt-1 text-xs font-medium uppercase tracking-wide text-steel-light">Years in Operation</dd>
+          <dt class="text-2xl font-extrabold text-white sm:text-3xl">Fuel</dt>
+          <dd class="mt-1 text-xs font-medium uppercase tracking-wide text-white/70">Diesel, Petrol &amp; LPG</dd>
         </div>
         <div>
-          <dt class="text-2xl font-extrabold text-white sm:text-3xl">24/7</dt>
-          <dd class="mt-1 text-xs font-medium uppercase tracking-wide text-steel-light">Supply Availability</dd>
+          <dt class="text-2xl font-extrabold text-white sm:text-3xl">Power</dt>
+          <dd class="mt-1 text-xs font-medium uppercase tracking-wide text-white/70">Generators &amp; Backup</dd>
         </div>
         <div>
-          <dt class="text-2xl font-extrabold text-white sm:text-3xl">Nationwide</dt>
-          <dd class="mt-1 text-xs font-medium uppercase tracking-wide text-steel-light">Coverage Area</dd>
+          <dt class="text-2xl font-extrabold text-white sm:text-3xl">Solar</dt>
+          <dd class="mt-1 text-xs font-medium uppercase tracking-wide text-white/70">Panels &amp; Batteries</dd>
         </div>
       </dl>
     </div>
   </div>
+
+  <div class="absolute inset-x-0 bottom-8">
+    <div class="mx-auto flex max-w-7xl justify-end gap-2 px-4 sm:px-6 lg:px-8">
+      {
+        slides.map((slide, i) => (
+          <button
+            type="button"
+            data-dot={i}
+            aria-label={`Show slide: ${slide.label}`}
+            class={`hero-dot h-1.5 rounded-full transition-all duration-500 ${i === 0 ? "w-10 bg-amber" : "w-5 bg-white/40 hover:bg-white/70"}`}
+          />
+        ))
+      }
+    </div>
+  </div>
 </section>
+
+<script is:inline define:vars={{ labels: slides.map((slide) => slide.label) }}>
+  const hero = document.getElementById("top");
+  const label = document.getElementById("hero-label");
+  const images = document.querySelectorAll(".hero-slide");
+  const dots = document.querySelectorAll(".hero-dot");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let current = 0;
+  let timer;
+
+  function show(index) {
+    current = (index + images.length) % images.length;
+    images.forEach((image, i) => {
+      image.classList.toggle("opacity-100", i === current);
+      image.classList.toggle("opacity-0", i !== current);
+    });
+    dots.forEach((dot, i) => {
+      const active = i === current;
+      dot.classList.toggle("w-10", active);
+      dot.classList.toggle("bg-amber", active);
+      dot.classList.toggle("w-5", !active);
+      dot.classList.toggle("bg-white/40", !active);
+    });
+    label.style.opacity = "0";
+    setTimeout(() => {
+      label.textContent = labels[current];
+      label.style.opacity = "1";
+    }, 250);
+  }
+
+  function start() {
+    if (reduceMotion || images.length < 2) return;
+    stop();
+    timer = setInterval(() => show(current + 1), 6000);
+  }
+
+  function stop() {
+    clearInterval(timer);
+  }
+
+  dots.forEach((dot, i) =>
+    dot.addEventListener("click", () => {
+      show(i);
+      start();
+    }),
+  );
+  hero.addEventListener("mouseenter", stop);
+  hero.addEventListener("mouseleave", start);
+  hero.addEventListener("focusin", stop);
+  hero.addEventListener("focusout", start);
+  start();
+</script>
